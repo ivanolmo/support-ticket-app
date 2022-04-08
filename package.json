@@ -1,0 +1,32 @@
+{
+  "name": "support-ticket-server",
+  "version": "1.0.0",
+  "description": "backend for support ticket app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanolmo/support-ticket-app.git"
+  },
+  "author": "Ivan Olmo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ivanolmo/support-ticket-app/issues"
+  },
+  "homepage": "https://github.com/ivanolmo/support-ticket-app#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.10"
+  },
+  "devDependencies": {
+    "concurrently": "^7.1.0",
+    "nodemon": "^2.0.15"
+  }
+}

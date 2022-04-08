@@ -1,0 +1,19 @@
+{
+  "name": "support-ticket-client",
+  "version": "1.0.0",
+  "description": "client for support ticket app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanolmo/support-ticket-app.git"
+  },
+  "author": "Ivan Olmo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ivanolmo/support-ticket-app/issues"
+  },
+  "homepage": "https://github.com/ivanolmo/support-ticket-app#readme"
+}
