@@ -1,4 +1,4 @@
-const dotenv = require('dotenv').config({ path: '../.env' });
+const dotenv = require('dotenv').config();
 const express = require('express');
 const { connectDB } = require('./config/db');
 const { errorMiddleware } = require('./middleware/errorMiddleware');
