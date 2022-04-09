@@ -59,7 +59,13 @@ const loginUser = asyncHandler(async (request, response) => {
   }
 });
 
+const getUserProfile = asyncHandler(async (request, response) => {
+  const { id, name, email } = request.user;
+  response.status(200).json({ id, name, email });
+});
+
 module.exports = {
   registerUser,
   loginUser,
+  getUserProfile,
 };
