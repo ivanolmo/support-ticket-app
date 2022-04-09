@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler');
 const bcrypt = require('bcryptjs');
 
 const User = require('../models/userModel');
+const { generateToken } = require('../utils/generateToken');
 
 const registerUser = asyncHandler(async (request, response) => {
   const { name, password, email } = request.body;
@@ -32,6 +33,7 @@ const registerUser = asyncHandler(async (request, response) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      token: generateToken(user._id),
     });
   } else {
     response.status(400);
@@ -40,7 +42,21 @@ const registerUser = asyncHandler(async (request, response) => {
 });
 
 const loginUser = asyncHandler(async (request, response) => {
-  response.send('User login controller');
+  const { email, password } = request.body;
+
+  const user = await User.findOne({ email });
+
+  if (user && (await bcrypt.compare(password, user.password))) {
+    response.status(200).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    });
+  } else {
+    response.status(401);
+    throw new Error('Invalid username and/or password, please try again');
+  }
 });
 
 module.exports = {
