@@ -5,6 +5,7 @@ import { FaSignInAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 import { login, reset } from '../features/auth/authSlice';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -48,7 +49,9 @@ function Login() {
     dispatch(login(userData));
   };
 
-  return (
+  return isLoading ? (
+    <LoadingSpinner />
+  ) : (
     <>
       <section className='heading'>
         <h1>

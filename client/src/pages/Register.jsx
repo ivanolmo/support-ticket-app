@@ -5,6 +5,7 @@ import { FaUser } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 
 import { register, reset } from '../features/auth/authSlice';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -58,7 +59,9 @@ function Register() {
     }
   };
 
-  return (
+  return isLoading ? (
+    <LoadingSpinner />
+  ) : (
     <>
       <section className='heading'>
         <h1>
