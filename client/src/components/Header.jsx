@@ -10,7 +10,6 @@ function Header() {
   const { user } = useSelector((state) => state.auth);
 
   const onLogout = () => {
-    console.log('logout');
     dispatch(logout());
     dispatch(reset());
 

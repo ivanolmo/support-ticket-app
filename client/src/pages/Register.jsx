@@ -29,7 +29,6 @@ function Register() {
     }
 
     if (isSuccess || user) {
-      console.log('success');
       navigate('/');
     }
 
