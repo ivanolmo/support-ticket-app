@@ -6,6 +6,7 @@ const user = JSON.parse(localStorage.getItem('user'));
 
 const initialState = {
   user: user ? user : null,
+  isLoggedIn: localStorage.getItem('user') ? true : false,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -79,6 +80,7 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(login.fulfilled, (state, action) => {
+        state.isLoggedIn = true;
         state.isLoading = false;
         state.isSuccess = true;
         state.user = action.payload;
@@ -91,6 +93,7 @@ export const authSlice = createSlice({
       })
       .addCase(logout.type, (state) => {
         state.user = null;
+        state.isLoggedIn = false;
       });
   },
 });
