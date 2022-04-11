@@ -26,22 +26,22 @@ const getAllTickets = async (token) => {
   return response.data;
 };
 
-// const getOneTicket = async (token) => {
-//   const config = {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   };
+const getOneTicket = async (token, ticketId) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
-//   const response = await axios.get(API_URL, config);
-//   console.log(response.data);
-//   return response.data;
-// };
+  const response = await axios.get(API_URL + `/${ticketId}`, config);
+
+  return response.data;
+};
 
 const ticketService = {
   createTicket,
   getAllTickets,
-  // getOneTicket,
+  getOneTicket,
 };
 
 export default ticketService;
