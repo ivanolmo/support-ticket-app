@@ -4,15 +4,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import TicketItem from '../components/TicketItem';
 import { getAllTickets, reset } from '../features/tickets/ticketSlice';
 import LoadingSpinner from '../components/LoadingSpinner';
+import { toast } from 'react-toastify';
 
 function Tickets() {
-  const { tickets, isLoading, isSuccess } = useSelector(
+  const { tickets, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.tickets
   );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
     dispatch(getAllTickets());
 
     return () => {
@@ -20,7 +25,7 @@ function Tickets() {
         dispatch(reset());
       }
     };
-  }, [dispatch, isSuccess]);
+  }, [dispatch, isSuccess, isError, message]);
 
   return isLoading ? (
     <LoadingSpinner />
