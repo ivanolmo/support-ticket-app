@@ -11,7 +11,7 @@ function NoteItem({ note }) {
     <div className={`note ${isStaff ? 'note-staff' : ''}`}>
       <h4>
         Note from: {user.name}
-        {isStaff ? <span class='staff-name'> (Staff Member )</span> : ''}
+        {isStaff ? <span className='staff-name'> (Staff Member )</span> : ''}
       </h4>
       <p>{note.text}</p>
       <div className='note-date'>
