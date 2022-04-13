@@ -39,35 +39,50 @@ function NewTicket() {
     <LoadingSpinner />
   ) : (
     <>
-      <section className='heading'>
-        <h1>Create new ticket</h1>
-        <p>Please enter information below</p>
+      <section className='text-[2rem] font-bold mb-12 py-0 px-5 sm:text-4xl'>
+        <h1 className='mb-3'>Create new ticket</h1>
+        <p className='text-2xl text-gray-500 sm:text-[2rem]'>
+          Please enter information below
+        </p>
       </section>
-      <section className='form'>
-        <div className='form-group'>
-          <label htmlFor='name'>Customer Name</label>
+      <section className='w-4/5 mx-auto'>
+        <div className='mb-3'>
+          <label htmlFor='name' className='block font-bold text-left mb-2 ml-2'>
+            Customer Name
+          </label>
           <input
             type='text'
-            className='form-control'
+            className='w-full p-3 mb-3 border border-solid border-gray-300 rounded-md'
             value={user.name}
             disabled
           />
         </div>
-        <div className='form-group'>
-          <label htmlFor='name'>Customer Email</label>
+        <div className='mb-3'>
+          <label
+            htmlFor='email'
+            className='block font-bold text-left mb-2 ml-2'
+          >
+            Customer Email
+          </label>
           <input
             type='text'
-            className='form-control'
+            className='w-full p-3 mb-3 border border-solid border-gray-300 rounded-md'
             value={user.email}
             disabled
           />
         </div>
         <form onSubmit={onSubmit}>
-          <div className='form-group'>
-            <label htmlFor='product'>Product</label>
+          <div className='mb-3'>
+            <label
+              htmlFor='product'
+              className='block font-bold text-left mb-2 ml-2'
+            >
+              Product
+            </label>
             <select
               name='product'
               id='product'
+              className='w-full p-3 mb-3 border border-solid border-gray-300 rounded-md'
               value={product}
               onChange={(e) => setProduct(e.target.value)}
             >
@@ -77,19 +92,26 @@ function NewTicket() {
               <option value='imac'>iMac</option>
             </select>
           </div>
-          <div className='form-group'>
-            <label htmlFor='description'>Please describe the issue</label>
+          <div className='mb-3'>
+            <label
+              htmlFor='description'
+              className='block font-bold text-left mb-2 ml-2'
+            >
+              Please describe the issue
+            </label>
             <textarea
               name='description'
               id='description'
               value={description}
-              className='form-control'
+              className='w-full p-3 mb-3 border border-solid border-gray-300 rounded-md'
               placeholder=''
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
           </div>
-          <div className='form-group'>
-            <button className='btn btn-block'>Submit</button>
+          <div className='mb-3'>
+            <button className='flex justify-center items-center w-full bg-black text-white text-base font-bold text-center py-2.5 px-5 mb-5 border border-solid border-black rounded-md hover:scale-95'>
+              Submit
+            </button>
           </div>
         </form>
       </section>

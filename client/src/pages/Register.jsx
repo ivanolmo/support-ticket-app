@@ -63,18 +63,20 @@ function Register() {
     <LoadingSpinner />
   ) : (
     <>
-      <section className='heading'>
-        <h1>
-          <FaUser /> Register {user}
+      <section className='text-[2rem] font-bold mb-12 py-0 px-5 sm:text-4xl'>
+        <h1 className='flex justify-center align-center'>
+          <FaUser className='mt-2 mr-4 sm:mt-0' /> Register {user}
         </h1>
-        <p>Please create an account</p>
+        <p className='text-2xl text-gray-500 sm:text-[2rem]'>
+          Please create an account
+        </p>
       </section>
-      <section className='form' onSubmit={onSubmit}>
+      <section className='w-4/5 mx-auto' onSubmit={onSubmit}>
         <form>
-          <div className='form-group'>
+          <div className='mb-3'>
             <input
               type='text'
-              className='form-control'
+              className='w-full p-3 mb-3 border border-solid border-gray-300 rounded-md'
               id='name'
               value={name}
               name='name'
@@ -83,10 +85,10 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className='form-group'>
+          <div className='mb-3'>
             <input
               type='email'
-              className='form-control'
+              className='w-full p-3 mb-3 border border-solid border-gray-300 rounded-md'
               id='email'
               value={email}
               name='email'
@@ -95,10 +97,10 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className='form-group'>
+          <div className='mb-3'>
             <input
               type='password'
-              className='form-control'
+              className='w-full p-3 mb-3 border border-solid border-gray-300 rounded-md'
               id='password'
               value={password}
               name='password'
@@ -107,10 +109,10 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className='form-group'>
+          <div className='mb-3'>
             <input
               type='password'
-              className='form-control'
+              className='w-full p-3 mb-3 border border-solid border-gray-300 rounded-md'
               id='passwordConfirm'
               value={passwordConfirm}
               name='passwordConfirm'
@@ -119,8 +121,10 @@ function Register() {
               onChange={onChange}
             />
           </div>
-          <div className='form-group'>
-            <button className='btn btn-block'>Submit</button>
+          <div className='mb-3'>
+            <button className='flex justify-center items-center w-full bg-black text-white text-base font-bold text-center py-2.5 px-5 border border-solid border-black rounded-md hover:scale-95'>
+              Submit
+            </button>
           </div>
         </form>
       </section>

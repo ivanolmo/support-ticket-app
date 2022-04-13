@@ -31,15 +31,15 @@ function Tickets() {
     <LoadingSpinner />
   ) : (
     <>
-      <h1>Tickets</h1>
-      <div className='tickets'>
-        <div className='ticket-headings'>
+      <h1 className='text-3xl font-bold mb-3'>Tickets</h1>
+      <div>
+        <div className='grid grid-cols-4 gap-5 justify-between items-center text-xl text-center font-bold bg-gray-200 mb-5 py-3 px-4 rounded-md'>
           <div>Date</div>
           <div>Product</div>
           <div>Status</div>
           <div></div>
         </div>
-        {tickets.map((ticket, idx) => (
+        {tickets.map((ticket) => (
           <TicketItem key={ticket._id} ticket={ticket} />
         ))}
       </div>

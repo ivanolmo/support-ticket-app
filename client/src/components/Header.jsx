@@ -17,27 +17,38 @@ function Header() {
   };
 
   return (
-    <header className='header'>
-      <div className='logo'>
-        <Link to='/'>Support Desk</Link>
+    <header className='header flex justify-between items-center py-5 mb-14 border-b border-solid border-gray-500'>
+      <div className='text-2xl font-bold hover:scale-105 hover:transition-all duration-300'>
+        <Link to='/' className='text-black hover:text-black/70'>
+          Support Desk
+        </Link>
       </div>
-      <ul>
+      <ul className='flex justify-between items-center'>
         {user ? (
-          <li>
-            <button className='btn' onClick={onLogout}>
-              <FaSignOutAlt /> Logout
+          <li className='ml-5'>
+            <button
+              className='flex justify-center items-center bg-black text-white text-base font-bold text-center py-2.5 px-5 border border-solid border-black rounded-md hover:scale-95'
+              onClick={onLogout}
+            >
+              <FaSignOutAlt className='mr-2' /> Logout
             </button>
           </li>
         ) : (
           <>
-            <li>
-              <Link to='/login'>
-                <FaSignInAlt /> Login
+            <li className='ml-5'>
+              <Link
+                to='/login'
+                className='flex items-center text-black text-xl hover:text-zinc-500'
+              >
+                <FaSignInAlt className='mr-2' /> Login
               </Link>
             </li>
-            <li>
-              <Link to='/register'>
-                <FaUser /> Register
+            <li className='ml-5'>
+              <Link
+                to='/register'
+                className='flex items-center text-black text-xl hover:text-zinc-500'
+              >
+                <FaUser className='mr-2' /> Register
               </Link>
             </li>
           </>

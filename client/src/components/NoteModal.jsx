@@ -31,22 +31,28 @@ function NoteModal({
       style={customStyles}
     >
       <h2>Add Note</h2>
-      <button className='btn btn-close' onClick={toggleModal}>
+      <button
+        className='absolute top-4 right-4 text-red-700 hover:scale-125'
+        onClick={toggleModal}
+      >
         <FaWindowClose />
       </button>
       <form onSubmit={onNoteSubmit}>
-        <div className='form-group'>
+        <div className='mb-3'>
           <textarea
             name='note-text'
             id='note-text'
-            className='form-control'
+            className='w-full p-3 mb-3 border border-solid border-gray-300'
             value={noteText}
             onChange={(e) => setNoteText(e.target.value)}
             placeholder='Please enter your note'
           ></textarea>
         </div>
-        <div className='form-group'>
-          <button type='submit' className='btn'>
+        <div className='mb-3'>
+          <button
+            type='submit'
+            className='flex justify-center items-center bg-black text-white text-base font-bold text-center py-2.5 px-5 border border-solid border-black rounded-md hover:scale-95'
+          >
             Create Note
           </button>
         </div>
