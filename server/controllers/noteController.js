@@ -50,4 +50,31 @@ const addNoteToTicket = asyncHandler(async (request, response) => {
   response.status(201).json(note);
 });
 
-module.exports = { getNotes, addNoteToTicket };
+// delete note from ticket
+const deleteNote = asyncHandler(async (request, response) => {
+  const user = await User.findById(request.user.id);
+
+  if (!user) {
+    response.status(401);
+    throw new Error('Authorization required, please log in');
+  }
+
+  const ticket = await Ticket.findById(request.params.ticketId);
+
+  if (ticket.user.toString() !== request.user.id) {
+    response.status(401);
+    throw new Error('Authorization required, please log in');
+  }
+
+  const note = await Note.findById(request.params.noteId);
+
+  await note.remove();
+
+  response.status(201).json({
+    success: true,
+    message: `successfully deleted note id:${note.id}`,
+    id: note.id,
+  });
+});
+
+module.exports = { getNotes, addNoteToTicket, deleteNote };
