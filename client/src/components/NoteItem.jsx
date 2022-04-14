@@ -1,14 +1,9 @@
 import { useSelector } from 'react-redux';
-import { FaWindowClose } from 'react-icons/fa';
 
-function NoteItem({ note }) {
+function NoteItem({ note, status, onDeleteNote }) {
   const { user } = useSelector((state) => state.auth);
 
   const isStaff = note.isStaff;
-
-  const deleteNote = () => {
-    console.log('delete note');
-  };
 
   return (
     <div
@@ -29,13 +24,14 @@ function NoteItem({ note }) {
         <span className='font-bold'>Note added on: </span>
         {new Date(note.createdAt).toLocaleString('en-US')}
       </div>
-      {/* TODO add delete note */}
-      <button
-        className='absolute bottom-2 right-4 font-bold text-red-500'
-        onClick={deleteNote}
-      >
-        Delete
-      </button>
+      {status !== 'closed' && (
+        <button
+          className='absolute bottom-2 right-4 font-bold text-red-500'
+          onClick={() => onDeleteNote({ note: note._id, ticket: note.ticket })}
+        >
+          Delete
+        </button>
+      )}
     </div>
   );
 }

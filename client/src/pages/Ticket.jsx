@@ -11,7 +11,11 @@ import {
   closeTicket,
   reset,
 } from '../features/tickets/ticketSlice';
-import { createNote, getAllNotes } from '../features/notes/noteSlice';
+import {
+  createNote,
+  getAllNotes,
+  deleteNote,
+} from '../features/notes/noteSlice';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 function Ticket() {
@@ -53,6 +57,12 @@ function Ticket() {
 
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
 
+  const onDeleteNote = ({ note, ticket }) => {
+    dispatch(deleteNote({ note, ticket }));
+
+    toast.success('Note successfully deleted');
+  };
+
   const onNoteSubmit = (e) => {
     e.preventDefault();
 
@@ -73,7 +83,7 @@ function Ticket() {
         <h2 className='flex justify-between items-center font-bold mb-3'>
           Ticket ID: {ticket._id}
           <span
-            className={`text-base text-center justify-self-center bg-green-500 text-white w-24 py-1 px-5 rounded-lg ${
+            className={`text-base text-center justify-self-center bg-green-500 text-white w-24 py-1 px-5 align-middle rounded-lg ${
               ticket.status === 'closed'
                 ? 'bg-red-600'
                 : ticket.status === 'open'
@@ -114,7 +124,12 @@ function Ticket() {
       />
 
       {notes.map((note) => (
-        <NoteItem key={note._id} note={note} />
+        <NoteItem
+          key={note._id}
+          note={note}
+          status={ticket.status}
+          onDeleteNote={onDeleteNote}
+        />
       ))}
 
       {ticket.status !== 'closed' && (
