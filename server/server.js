@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
   );
 } else {
   app.get('/', (_, response) => {
-    response.status(200).json({ message: 'Support Ticket API' });
+    response.status(200).json({ message: 'Support Ticket API backend...' });
   });
 }
 
